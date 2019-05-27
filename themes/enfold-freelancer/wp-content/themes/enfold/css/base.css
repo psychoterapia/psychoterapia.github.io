@@ -587,3 +587,11 @@ body div .avia-testimonial{display:block;float:left}
 .text-center {
 	text-align: center;
 }
+
+.text-right {
+	text-align: right;
+}
+
+.quote {
+	font-style: italic;
+}
