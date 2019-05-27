@@ -583,3 +583,7 @@ body div .avia-testimonial{display:block;float:left}
 .text-white {
 	color: #fff !important;
 }
+
+.text-center {
+	text-align: center;
+}
