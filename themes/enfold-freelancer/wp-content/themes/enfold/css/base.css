@@ -618,14 +618,14 @@ body div .avia-testimonial{display:block;float:left}
 
 .trees-background {
 	background-image: url(/files/trees_background.jpg);
-	background-position: top left;
+	background-position: 25%;
 	background-repeat: no-repeat;
   background-size: cover;
 }
 
 @media only screen and (max-width: 1024px) {
 	.trees-background {
-		background-position: center center;
+		/*background-position: -10% center;*/
 	}
 }
 
