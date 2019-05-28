@@ -595,3 +595,24 @@ body div .avia-testimonial{display:block;float:left}
 .quote {
 	font-style: italic;
 }
+
+.custom-menu-mobile {
+	display: none;
+}
+
+.custom-menu-desktop {
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+}
+
+@media only screen and (max-width: 990px) {
+	.custom-menu-mobile {
+		display: block;
+	}
+
+	.custom-menu-desktop {
+		display: none;
+	}
+}
+
