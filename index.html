@@ -429,6 +429,7 @@
                     <h2>Adres</h2>
                     <p>Luramyrveien 17,
                       <br /> 4313 Sandnes, Norwegia
+                      <img style="height: 30px" height="30" src="/files/norge.png">
                     </p>
                     <p>Tel. <b>+47 96841351</b></p>
                     <p><a href="mailto:sammen.bg@gmail.com">sammen.bg@gmail.com</a></p>
@@ -440,7 +441,7 @@
                   <div class='avia_textblock  av_inherit_color ' style='color:#ffffff; ' itemprop="text">
                     <h2>Godziny przyjęć:</h2>
                     <p>Poniedziałek - Piątek 9:00-19:00
-                      <br /> Sobota 8:00-14:00s
+                      <br/> Sobota 8:00-14:00
                     </p>
                     <h2></h2>
                   </div>
@@ -470,9 +471,16 @@
             </div>
           </div>
         </div>
-        <div>
-          <div> </div>
-          <!--end builder template-->
+        <div id='dojazd'>
+          <style type="text/css">
+             .googlemap iframe {
+             width: 100% !important;
+             display: flex;
+             }
+          </style>
+          <div class="googlemap">
+             <iframe width="1200" height="500" frameborder="0" style="border:0" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=Luramyrveien%2017%2C%20%204313%20Sandnes%2C&key=AIzaSyB4QkHCVMaQN8wjlP1bVAJlZrsU-Pn5LNE"></iframe>
+          </div>
         </div>
         <!-- close default .container_wrap element -->
         <footer class='container_wrap socket_color' id='socket' role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter">
