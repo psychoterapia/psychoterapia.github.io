@@ -5,7 +5,7 @@
 (function($)
 {
 	$.fn.avia_ajax_form = function(variables)
-	{	
+	{
 		var defaults =
 		{
 			sendPath: 'send.php',
@@ -29,8 +29,8 @@
 				responseContainer = form.next(options.responseContainer+":eq(0)");
 
 				send.button.on('click', checkElements);
-				
-				
+
+
 				//change type of email forms on mobile so the e-mail keyboard with @ sign is used
 				if($.avia_utilities.isMobile)
 				{
@@ -40,7 +40,7 @@
 						if(is_email) currentElement.attr('type','email');
 					});
 				}
-			
+
 
 			function checkElements( e )
 			{
@@ -61,7 +61,7 @@
 					 	{
 					 		if(currentElement.is(':checked')) { value = true } else {value = ''}
 					 	}
-					 	
+
 					 	send.dataObj[name] = encodeURIComponent(value);
 
 					 	if(classes && classes.match(/is_empty/))
@@ -91,7 +91,7 @@
 							}
 							nomatch = false;
 						}
-						
+
 						if(classes && classes.match(/is_ext_email/))
 						{
 							//  also allowed would be: ! # $ % & ' * + - / = ? ^ _ ` { | } ~
@@ -106,7 +106,7 @@
 							}
 							nomatch = false;
 						}
-						
+
 						if(classes && classes.match(/is_phone/))
 						{
 							if(!value.match(/^(\d|\s|\-|\/|\(|\)|\[|\]|e|x|t|ension|\.|\+|\_|\,|\:|\;){3,}$/))
@@ -163,18 +163,18 @@
 				{
 					if(form.data('av-custom-send'))
 					{
-						mailchimp_send();	
+						mailchimp_send();
 					}
 					else
 					{
 						send_ajax_form();
 					}
 				}
-				
+
 				return false;
 			}
-			
-			
+
+
 			function send_ajax_form()
 			{
 				if(form_sent){ return false; }
@@ -182,10 +182,10 @@
 				form_sent = true;
 				send.button.addClass('av-sending-button');
 				send.button.val(send.button.data('sending-label'));
-				
+
 				var redirect_to = form.data('avia-redirect') || false,
 					action		= form.attr('action');
-				
+
 				responseContainer.load(action+' '+options.responseContainer, send.dataObj, function()
 				{
 					if(redirect_to && action != redirect_to)
@@ -201,29 +201,29 @@
 					}
 				});
 			}
-			
-			
+
+
 			function mailchimp_send()
 			{
 				if(form_sent){ return false; }
 
 				form_sent = true;
-				
+
 				var original_label = send.button.val();
 
 				send.button.addClass('av-sending-button');
 				send.button.val(send.button.data('sending-label'));
 				send.dataObj.ajax_mailchimp = true;
-				
+
 				var redirect_to 		= form.data('avia-redirect') || false,
 					action				= form.attr('action'),
 					error_msg_container = form.find('.av-form-error-container'),
-					form_id 			= form.data('avia-form-id'); 
-				
+					form_id 			= form.data('avia-form-id');
+					console.log('ajax post to ! ', action);
 				$.ajax({
 					url: action,
 					type: "POST",
-					data:send.dataObj,
+					data: send.dataObj,
 					beforeSend: function()
 					{
 						if(error_msg_container.length)
@@ -238,8 +238,8 @@
 					success: function(responseText)
 					{
 						var response	= jQuery("<div>").append(jQuery.parseHTML(responseText)),
-							error		= response.find('.av-form-error-container');	
-						
+							error		= response.find('.av-form-error-container');
+
 						if(error.length)
 						{
 							form_sent = false;
@@ -263,35 +263,35 @@
 							else
 							{
 								var success_text = response.find(options.responseContainer + "_" + form_id);
-								
-								responseContainer.html(success_text).removeClass('hidden').css({display:"block"});
-								
+
+								responseContainer.css({display:"block"});
+
 								form.slideUp(400, function()
 								{
 									responseContainer.slideDown(400, function()
-									{ 
-										$('body').trigger('av_resize_finished'); 
+									{
+										$('body').trigger('av_resize_finished');
 									});
-									
+
 								send.formElements.val('');
 							});
 							}
 						}
-						
+
 					},
 					error: function()
 					{
-						
+
 					},
 					complete: function()
 					{
-					    
+
 					}
 				});
 
 			}
-			
-			
+
+
 		});
 	};
 })(jQuery);
