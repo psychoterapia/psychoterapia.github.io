@@ -62,7 +62,7 @@
 					 		if(currentElement.is(':checked')) { value = true } else {value = ''}
 					 	}
 
-					 	send.dataObj[name] = encodeURIComponent(value);
+					 	send.dataObj[name] = value;
 
 					 	if(classes && classes.match(/is_empty/))
 						{
@@ -186,19 +186,19 @@
 				var redirect_to = form.data('avia-redirect') || false,
 					action		= form.attr('action');
 
-				responseContainer.load(action+' '+options.responseContainer, send.dataObj, function()
-				{
-					if(redirect_to && action != redirect_to)
-					{
-						form.attr('action', redirect_to);
-						location.href = redirect_to;
-						// form.submit();
+				responseContainer.load(action+' '+options.responseContainer, send.dataObj, function(val) {
+					try {
+						val = JSON.parse(val);
+						if (val && val.status === 'success') {
+							responseContainer.text('Wiadomość została wysłana.');
+							form.slideUp(400, function(){responseContainer.slideDown(400, function(){ $('body').trigger('av_resize_finished'); }); send.formElements.val('');});
+						} else {
+							throw new Error('error');
+						}
+					} catch(err) {
+						responseContainer.text('Błąd przy wysyłaniu wiadomości');
 					}
-					else
-					{
-						responseContainer.removeClass('hidden').css({display:"block"});
-						form.slideUp(400, function(){responseContainer.slideDown(400, function(){ $('body').trigger('av_resize_finished'); }); send.formElements.val('');});
-					}
+					responseContainer.removeClass('hidden').css({display:"block"});
 				});
 			}
 
@@ -262,8 +262,6 @@
 							}
 							else
 							{
-								var success_text = response.find(options.responseContainer + "_" + form_id);
-
 								responseContainer.css({display:"block"});
 
 								form.slideUp(400, function()
