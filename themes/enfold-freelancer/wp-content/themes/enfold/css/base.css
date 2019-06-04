@@ -577,7 +577,7 @@ body div .avia-testimonial{display:block;float:left}
 }
 
 .background-main {
-	background:url(/files/background.jpg) center center no-repeat scroll; vertical-align:middle; padding:100px;
+	background: url(/files/background.jpg) center center no-repeat scroll; vertical-align:middle; padding: 100px;
 }
 
 .text-white {
@@ -618,23 +618,22 @@ body div .avia-testimonial{display:block;float:left}
 
 .trees-background {
 	background-image: url(/files/trees_background.jpg);
-	background-position: 25%;
+	background-position: 80%;
 	background-repeat: no-repeat;
   background-size: cover;
-}
-
-@media only screen and (max-width: 1024px) {
-	.trees-background {
-		/*background-position: -10% center;*/
-	}
 }
 
 @media only screen and (max-width: 768px) {
 	.trees-background {
 		background-size: 300px 300px !important;
+		background-position: 100% !important;
     height: 300px !important;
 		position: absolute;
 		bottom: 0;
     background-position: bottom left;
+    opacity: 0.5;
+	}
+
+	.main-text .quote {
 	}
 }
