@@ -722,8 +722,8 @@ body {
         <div id='dojazd'>
           <style type="text/css">
              .googlemap iframe {
-             width: 100% !important;
-             display: flex;
+               width: 100% !important;
+               display: flex;
              }
           </style>
           <div class="googlemap">
@@ -791,12 +791,16 @@ body {
           window['ga-disable-UA-785212-1'] = true;
       }
     </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144472474-1"></script>
     <script>
-      // window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      // ga('set', 'anonymizeIp', true);
-      // ga('create', 'UA-785212-1', 'auto');
-      // ga('send', 'pageview');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-144472474-1');
     </script>
+
     <script async src='analytics.js'></script>
   </body>
 </html>
